@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Tipologiapp;
 
 class TipologiappSeeder extends Seeder
 {
@@ -12,6 +13,16 @@ class TipologiappSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+           Tipologiapp::create([
+               'nombre' => 'Cognitivo'
+           ]);
+
+           Tipologiapp::create([
+                'nombre' => 'Procedimental'
+           ]);
+
+           Tipologiapp::create([
+                'nombre' => 'Valorativo/actitudinal'
+           ]);
     }
 }

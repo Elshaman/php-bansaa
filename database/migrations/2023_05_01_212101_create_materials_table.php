@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->text('ruta');
+            $table->foreignId('actividad_id')->constrained();
             $table->timestamps();
         });
     }

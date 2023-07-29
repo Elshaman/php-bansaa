@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('detallevidencias', function (Blueprint $table) {
+        Schema::create('tipo_evidencias', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
             $table->timestamps();
         });
     }
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('detallevidencias');
+        Schema::dropIfExists('tipo_evidencias');
     }
 };

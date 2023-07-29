@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('evidencias', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->string('desc');
+            $table->foreignId('instrumento_id')->constrained();
+            $table->foreignId('tecnicaevaluacion_id')->constrained();
+            $table->foreignId('actividad_id')->constrained();
+            $table->foreignId('formatoevidencia_id')->constrained();
+            $table->foreignId('tipo_evidencia_id')->constrained();
             $table->timestamps();
         });
     }

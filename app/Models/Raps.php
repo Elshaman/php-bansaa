@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Raps extends Model
 {
     use HasFactory;
+
+    public function criteriosEvaluacion(){
+        return $this->hasMany(CriteriosEval::class);
+    }
+
 }

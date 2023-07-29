@@ -27,6 +27,12 @@ class ActividadPaso1Controller extends Controller
         $programas = Programa::all();
         return view('actividad.paso1')->with('programas', $programas)
                                            ->with('tipos_actividad', $tipos_actividad) ;
+       /*foreach ($programas as $programa){
+            var_dump($programa->nombre);
+            echo "<hr/>";
+        }*/
+
+
     }
 
     /**

@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('programas', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo_pf');
-            $table->string('name_pf');
-            $table->string('version_pf');
+            $table->string('codigo');
+            $table->string('nombre');
+            $table->string('version');
             $table->string('estado');
             $table->timestamps();
         });

@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('raps', function (Blueprint $table) {
             $table->id();
-            $table->string('codeRAP');
-            $table->string('nameRAP');
-            $table->string('estadoRAP');
+            $table->longText('nombre');
             $table->foreignId('competencia_id')->constrained();
             $table->timestamps();
         });

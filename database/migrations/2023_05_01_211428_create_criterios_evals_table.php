@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('criterios_evals', function (Blueprint $table) {
             $table->id();
+            $table->longText('nombre');
+            $table->foreignId('rap_id')->constrained();
             $table->timestamps();
         });
     }

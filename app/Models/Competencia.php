@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Competencia extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'codigo',
+        'nombre',
+        'programa_id',
+    ];
+
 
     public function raps(){
 

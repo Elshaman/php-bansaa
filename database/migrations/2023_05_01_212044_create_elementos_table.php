@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('elementos', function (Blueprint $table) {
             $table->id();
+            //@todo: averiguar si los elementos vienen en cantidad , y especificaion
+            $table->string('nombre');
             $table->timestamps();
         });
     }

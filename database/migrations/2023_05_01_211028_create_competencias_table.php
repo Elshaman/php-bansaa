@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('competencias', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo_pf');
-            $table->string('name_pf');
-            $table->string('estado');
+            $table->string('codigo');
+            $table->string('nombre');
             $table->foreignId('programa_id')->constrained();
             $table->timestamps();
         });
