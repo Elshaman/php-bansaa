@@ -21,6 +21,7 @@ return new class extends Migration
             $table->boolean('genera_evidencia');
             $table->foreignId('tipoapp_id')->constrained();
             $table->foreignId('tipologiapp_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->foreignId('rap_id')->constrained();
             $table->timestamps();
         });

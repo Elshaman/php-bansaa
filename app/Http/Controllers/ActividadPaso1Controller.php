@@ -25,7 +25,7 @@ class ActividadPaso1Controller extends Controller
     {
         $tipos_actividad = Tipoapp::all();
         $programas = Programa::all();
-        return view('actividad.paso1')->with('programas', $programas)
+        return view('modulo_1.actividad.paso1')->with('programas', $programas)
                                            ->with('tipos_actividad', $tipos_actividad) ;
        /*foreach ($programas as $programa){
             var_dump($programa->nombre);

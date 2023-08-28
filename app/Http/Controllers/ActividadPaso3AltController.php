@@ -48,7 +48,7 @@ class ActividadPaso3AltController extends Controller
         }else{
             session(['numevidencias' =>  1]);
         }
-        return view('actividad.paso3-cpy')->with('numevidencias' , session("numevidencias"))
+        return view('modulo_1.actividad.paso3-cpy')->with('numevidencias' , session("numevidencias"))
                                                ->with('tipos_evidencia' , $tipos_evidencia)
                                                ->with('formatos_evidencia' , $formatos_evidencia)
                                                ->with('tecnicas_evaluacion' , $tecnicas_evaluacion)
@@ -88,7 +88,7 @@ class ActividadPaso3AltController extends Controller
             }
         }
 
-        echo "actividad y evidencias registradas correctamente";
+        return redirect('actividad_paso_4/create');
     }
 
     /**

@@ -6,6 +6,7 @@ use App\Models\Actividad;
 use App\Http\Requests\StoreActividadRequest;
 use App\Http\Requests\UpdateActividadRequest;
 use App\Models\Tipologiapp;
+use Illuminate\Support\Facades\Auth;
 
 class ActividadPaso2Controller extends Controller
 {
@@ -23,7 +24,7 @@ class ActividadPaso2Controller extends Controller
     public function create()
     {
         $tipologias = Tipologiapp::all();
-        return view('actividad.paso2')->with('tipologias' , $tipologias);
+        return view('modulo_1.actividad.paso2')->with('tipologias' , $tipologias);
     }
 
     /**
@@ -44,6 +45,7 @@ class ActividadPaso2Controller extends Controller
         $actividad->tipologiapp_id = $request->tipologia;
         $actividad->tipoapp_id= session('tipos_actividad' );
         $actividad->rap_id = session('raps');
+        $actividad->user_id = Auth::user()->id;
         $actividad->save();
         session(['actividad' =>  $actividad->id]);
 
