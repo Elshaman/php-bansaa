@@ -30,7 +30,8 @@ class DatabaseSeeder extends Seeder
             TipoEvidenciaSeeder::class,
             InstrumentoSeeder::class,
             FormatoevidenciaSeeder::class,
-            TecnicaevaluacionSeeder::class
+            TecnicaevaluacionSeeder::class,
+            UserSeeder::class
         ]);
 
     }

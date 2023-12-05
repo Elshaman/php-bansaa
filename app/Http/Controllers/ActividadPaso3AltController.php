@@ -26,16 +26,15 @@ class ActividadPaso3AltController extends Controller
      */
     public function create()
     {
-        @var_dump(session('actividad'));
+
         $tipos_evidencia = TipoEvidencia::all();
         $formatos_evidencia = Formatoevidencia::all();
         $tecnicas_evaluacion = Tecnicaevaluacion::all();
         $instrumentos_evaluacion = Instrumento::all();
         $criterios_evaluacion = CriteriosEval::where('rap_id', session('raps'))->get();
         session(['numcriterios' =>  $criterios_evaluacion->count()]);
-        var_dump(session("numcriterios"));
-        //die();
-        //var_dump($_GET);
+
+
         if(isset($_GET["add"])){
 
             $numevidencias  = session("numevidencias") ;
@@ -54,6 +53,8 @@ class ActividadPaso3AltController extends Controller
                                                ->with('tecnicas_evaluacion' , $tecnicas_evaluacion)
                                                ->with('instrumentos_evaluacion' , $instrumentos_evaluacion)
                                                ->with('criterios_evaluacion' , $criterios_evaluacion);
+
+
     }
 
     /**
@@ -61,10 +62,7 @@ class ActividadPaso3AltController extends Controller
      */
     public function store(Request $request)
     {
-        var_dump($request->except("token"));
-        //var_dump(session("actividad"));
-        //var_dump(session("numevidencias"));
-        //die();
+
         for($i=1 ; $i<=session("numevidencias"); $i++ ){
             //guardar la nueva evidencia
             $e = new Evidencia();

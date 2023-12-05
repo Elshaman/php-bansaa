@@ -13,4 +13,10 @@ class Raps extends Model
         return $this->hasMany(CriteriosEval::class);
     }
 
+    public function actividades(){
+        return $this->hasMany(Actividad::class, "rap_id");
+    }
+
+
+
 }

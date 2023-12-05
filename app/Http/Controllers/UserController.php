@@ -34,7 +34,7 @@ class UserController extends Controller
         $u->email = $request->input("email");
         $u->password = Hash::make($request->input("password"));
         $u->save();
-        echo "registro exitoso";
+        return redirect('user/create')->with("mensaje" , "instructor registrado exitosamente");
 
     }
 

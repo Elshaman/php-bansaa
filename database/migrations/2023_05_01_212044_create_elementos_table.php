@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             //@todo: averiguar si los elementos vienen en cantidad , y especificaion
             $table->string('nombre');
+            $table->foreignId('actividad_id')->constrained();
             $table->timestamps();
         });
     }

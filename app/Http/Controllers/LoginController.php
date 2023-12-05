@@ -28,11 +28,12 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
+        var_dump($request->all());
         if(Auth::attempt([ 'email' =>  $request->input("email"),
             'password' => $request->input('password')])){
-            return redirect('actividad');
+            return redirect('/');
         }else{
-            echo "no autenticado";
+            return redirect('/login/create')->with("mensaje" , "Usuario no reconocido");;
         }
     }
 

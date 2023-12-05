@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Programa;
+use Illuminate\Support\Facades\Auth;
 //use App\Http\Requests\StoreActividadRequest;
 use App\Http\Requests\UpdateActividadRequest;
 use App\Models\Tipoapp;
@@ -23,10 +24,15 @@ class ActividadPaso1Controller extends Controller
      */
     public function create()
     {
-        $tipos_actividad = Tipoapp::all();
-        $programas = Programa::all();
-        return view('modulo_1.actividad.paso1')->with('programas', $programas)
-                                           ->with('tipos_actividad', $tipos_actividad) ;
+        if(Auth::check()){
+            $tipos_actividad = Tipoapp::all();
+            $programas = Programa::all();
+            return view('modulo_1.actividad.paso1')->with('programas', $programas)
+                ->with('tipos_actividad', $tipos_actividad) ;
+        }else{
+            return redirect()->route('login/create');
+        }
+
        /*foreach ($programas as $programa){
             var_dump($programa->nombre);
             echo "<hr/>";

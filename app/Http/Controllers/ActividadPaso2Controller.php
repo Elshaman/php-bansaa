@@ -32,26 +32,34 @@ class ActividadPaso2Controller extends Controller
      */
     public function store(StoreActividadRequest $request)
     {
-        $actividad = new Actividad();
+
+
+
+            $actividad = new Actividad();
         //@todo: toca poner en la migracion atributo name a null
 
         //var_dump($request->all());
-        $actividad->verbo = $request->verbo;
-        $actividad->objeto =  $request->objeto;
-        $actividad->condicion =  $request->condicion;
-        $actividad->descripcion =  $request->desc;
-        $actividad->tiempo =  $request->tiempo;
-        $actividad->genera_evidencia = $request->genera_evidencia === "si";
-        $actividad->tipologiapp_id = $request->tipologia;
-        $actividad->tipoapp_id= session('tipos_actividad' );
-        $actividad->rap_id = session('raps');
-        $actividad->user_id = Auth::user()->id;
-        $actividad->save();
-        session(['actividad' =>  $actividad->id]);
+            $actividad->verbo = $request->verbo;
+            $actividad->objeto =  $request->objeto;
+            $actividad->condicion =  $request->condicion;
+            $actividad->descripcion =  $request->desc;
+            $actividad->tiempo =  $request->tiempo;
+            $actividad->genera_evidencia = $request->genera_evidencia === "si";
+            $actividad->tipologiapp_id = $request->tipologia;
+            $actividad->tipoapp_id= session('tipos_actividad' );
+            $actividad->rap_id = session('raps');
+            $actividad->user_id = Auth::user()->id;
+
+            $actividad->save();
+            session(['actividad' =>  $actividad->id]);
+
+
 
         //echo "actividad creada";
         //return response()->redirectTo('actividad_paso_3/create');
-        return response()->redirectTo('actividad_paso_3_alt/create');
+
+
+       return response()->redirectTo('actividad_paso_3_alt/create');
         //@TODO rectificar porque aqui vamos a bifurcar a alternativa
     }
 

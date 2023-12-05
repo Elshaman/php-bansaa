@@ -41,12 +41,36 @@ Route::resource('actividad' , \App\Http\Controllers\ActividadController::class);
 Route::resource('user' , \App\Http\Controllers\UserController::class);
 Route::resource('login' , \App\Http\Controllers\LoginController::class);
 
+//Rutas varias modulo 1:
+Route::get('/' , [\App\Http\Controllers\VariosModulo1Controller::class , "principal"]);
+
 //Rutas JSON
 Route::resource('programas' , \App\Http\Controllers\ProgramaController::class);
 Route::resource('competencias' , CompetenciaController::class);
 Route::resource('raps' , RapsController::class);
 
+
+//RUTAS MODULO 2
+Route::any('catalogo', [\App\Http\Controllers\CatalogController::class , "index"]);
+
 //rutas prueba
 Route::get('nultiselect' , function (){
     return view('multiselect');
 });
+
+
+/*Route::group([
+    'middleware' => ['api', 'cors'],
+], function ($router) {
+    //Add you routes here, for example:
+    Route::get('navbar' , function (){
+        return view('layouts.master');
+    }
+    )}`*/
+
+
+Route::get('navbar' , function (){
+    return view('layouts.master');
+});
+
+
