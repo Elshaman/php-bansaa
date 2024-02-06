@@ -61,11 +61,25 @@ class LoginController extends Controller
         //
     }
 
+
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
         //
+    }
+
+
+    //logout
+    public function logout(){
+        Auth::logout();
+
+        session()->invalidate();
+
+        session()->regenerateToken();
+
+        return redirect('/login/create');
     }
 }

@@ -5,12 +5,12 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Nueva Actividad</h1>
+        <h1>Editar Actividad</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
                 <li class="breadcrumb-item">Módulo IAA</li>
-                <li class="breadcrumb-item active">Nueva Actividad</li>
+                <li class="breadcrumb-item active">Editar Actividad</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -27,10 +27,9 @@
 
                 <div class="row pt-3">
                     <div class="col text-left">
-
-                        <a href="{{  url('actividad_paso_4/create?add=1') }}
+                        <a href="{{  url("update_paso_4/$id_actividad/edit?add=1") }}
                             "class="btn btn-success text-center">
-                              <i class="bi bi-plus-circle"></i>Añadir Material/Recurso
+                            <i class="bi bi-plus-circle"></i>Añadir Material/Recurso
                         </a>
                     </div>
                 </div>
@@ -38,11 +37,10 @@
 
 
 
-
-                <form class="row g-4 font-work" action="{{  url("actividad_paso_4") }}"
+                <form class="row g-4 font-work" action="{{  url("update_paso_4/$id_actividad") }}"
                             method="post" enctype="multipart/form-data"  >
                     @csrf
-
+                    @method("PUT")
 
                     @for($i = 0 ; $i < session("num_materiales") ; $i++)
                         <div class="card">
@@ -51,27 +49,33 @@
                                             <label for="nombre-material" class="form-label labels-forms is-required">Nombre Material {{ $i + 1 }}
                                             </label>
                                             <input type="text" class="form-control"
-                                                   id="nombre_material_{{ $i + 1 }}"
-                                                   name="nombre_material_{{ $i + 1 }}"
-                                                   value=""
+                                                   id="nombre_material_{{ $i  }}"
+                                                   name="nombre_material_{{ $i  }}"
+                                                   @if(isset($materiales[$i]))
+                                                        value="{{ old( "nombre_material_$i" , $materiales[$i]->nombre)   }}"
+                                                   @else
+                                                        value=""
+                                                    @endif
                                                    >
 
+                                            <div class="form-check">
+
+                                            </div>
                                             <label for="descripcion-evidencia" class="form-label labels-forms is-required">Seleccione
-                                                Archivo de material  {{ $i + 1 }} </label>
+                                                Archivo de material  {{ $i }} </label>
                                             <input type="file" class="form-control"
-                                                   name="archivo_material_{{ $i + 1 }}"
-                                                   id="archivo_material_{{ $i + 1 }}"
+                                                   name="archivo_material_{{ $i }}"
+                                                   id="archivo_material_{{ $i }}"
                                                    value="">
 
                                             <div class="row pt-3">
                                                 <div class="col text-end">
-                                                    <a  href="{{  url("actividad_paso_4/create?del=1")  }}"
+                                                    <a  href="{{  url("update_paso_4/$id_actividad/edit?del=1")  }}"
                                                         class="btn btn-danger text-center">
                                                         <i class="bi bi-trash"></i>Borrar
                                                     </a>
                                                 </div>
                                             </div>
-
                                         </div>
                             </div>
                         </div> <!-- end card -->

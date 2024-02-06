@@ -19,4 +19,8 @@ class Competencia extends Model
 
         return $this->hasMany(Raps::class);
     }
+
+    public function programa(){
+        return $this->belongsTo(Programa::class );
+    }
 }

@@ -11,7 +11,7 @@ class VariosModulo1Controller extends Controller
         if(Auth::check()){
             return view('principal');
         }else{
-            return redirect('login/create')->with("mensaje", "Debe iniciar sesión");
+            return redirect('login/create');//->with("mensaje", "Debe iniciar sesión");
         }
 
     }

@@ -6,7 +6,7 @@ use App\Models\Herramienta;
 
 use Illuminate\Http\Request;
 
-class ActividadPaso6Controller extends Controller
+class  ActividadPaso6Controller extends Controller
 {
     /**
      * Display a listing of the resource.

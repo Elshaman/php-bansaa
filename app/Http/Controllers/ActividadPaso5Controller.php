@@ -41,11 +41,26 @@ class ActividadPaso5Controller extends Controller
     {
             for($i=1 ; $i<=session("num_elementos"); $i++ ){
                 $e = new Elemento();
+                $e->actividad_id = session("actividad");
                 $e->nombre = $request->input("nombre_elemento_$i");
                 $e->save();
             }
 
-            return redirect('actividad_paso_6/create');
+            //destruir todas las variables de sesion utilizadas
+            //en el proceso
+                session()->forget([ "programa" ,
+                                   "competencia" ,
+                                    "raps",
+                                    "tipos_actividad",
+                                    "actividad",
+                                    "numevidencias",
+                                    "num_elementos",
+                                    "num_materiales",
+                                    "numcriterios"]);
+            //
+
+            return redirect('actividad')
+                ->with('success', 'Actividad Registrada exitosamente');
     }
 
     /**

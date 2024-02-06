@@ -11,6 +11,16 @@
                                  class="img-fluid" alt="Sample image">
                         </div>
                         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 border border-success border-opacity-25">
+                            @if(session("mensaje"))
+                                <div class="row pt-3">
+                                    <div class="col text-center">
+                                        <div class="alert alert-danger alert-dismissible fade show"  role="alert">
+                                            <strong>Lo sentimos: </strong> {{ session("mensaje") }}
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+
                             <form class="pt-3" method="post" action="{{ url('login') }}">
                                 @csrf
                                 <!-- Email input -->
@@ -37,7 +47,7 @@
                                             Recordarme
                                         </label>
                                     </div>
-                                    <a href="#!" class="text-body">¿Olvido contraseña?</a>
+
                                 </div>
 
                                 <div class="text-center text-lg-start mt-4 pt-2">
@@ -47,11 +57,7 @@
                                                                                                      class="link-info">Registrarse</a></p>
                                 </div>
 
-                                    @if(session('mensaje'))
-                                        <div class="alert alert-danger">
-                                            {{session('mensaje')}}
-                                        </div>
-                                    @endif
+
 
                             </form>
                         </div>

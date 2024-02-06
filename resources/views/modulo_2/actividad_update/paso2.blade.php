@@ -4,12 +4,12 @@
 
     <main id="main" class="main">
         <div class="pagetitle">
-            <h1>Nueva Actividad</h1>
+            <h1>Editar Actividad</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
                     <li class="breadcrumb-item">Módulo IAA</li>
-                    <li class="breadcrumb-item active">Nueva Actividad</li>
+                    <li class="breadcrumb-item active">Editar Actividad</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -27,9 +27,11 @@
                             se
                             desarrollará por parte de los aprendices e indicando las horas de duración.</p>
 
-                        <form class="row g-4 font-work needs-validation"  action="{{ url('actividad_paso_2')  }}"
+                        <form class="row g-4 font-work needs-validation"
+                              action="{{ url(  "update_paso_2/$actividad->id")  }}"
                               method="post" novalidate>
                             @csrf
+                            @method('PUT')
                             <div class="col-8">
                                 <label for="tipologia" class="form-label is-required">Tipología</label>
                                 <select
@@ -39,7 +41,12 @@
                                     aria-label="Default select example"
                                     required>
                                     @foreach($tipologias as $tipologia)
-                                        <option value="{{ $tipologia->id  }}" > {{  $tipologia->nombre }} </option>
+                                        <option value="{{ $tipologia->id  }}"
+                                                @if($tipologia->id == $id_tipologia)
+                                                    selected="selected"
+                                                @endif
+
+                                        > {{  $tipologia->nombre }} </option>
                                     @endforeach
 
                                 </select>
@@ -60,14 +67,19 @@
                                         <input type="text"
                                                id="verbo"
                                                name="verbo"
-                                               class="form-control" placeholder="verbo" required>
+                                               class="form-control"
+                                               value="{{ $actividad->verbo }}"
+                                               placeholder="verbo" required>
 
                                     </div>
                                     <div class="col p-3"><!-- col objeto -->
                                         <label for="tiempo-actividad" class="form-label labels-forms is-required">Objeto
                                         </label>
 
-                                        <input type="text" class="form-control" placeholder="Objeto" id="objeto" name="objeto"  required>
+                                        <input type="text"
+                                               value="{{ $actividad->objeto }}"
+                                               class="form-control"
+                                               placeholder="Objeto" id="objeto" name="objeto"  required>
 
                                     </div>
                                     <div class="col p-3"> <!-- col condicion -->
@@ -75,7 +87,13 @@
                                         <label for="condicion-actividad" class="form-label labels-forms is-required">Condición
                                         </label>
 
-                                        <input type="text" class="form-control" placeholder="condición " id="condicion" name="condicion" required>
+                                        <input type="text"
+                                               class="form-control"
+                                               placeholder="condición "
+                                               id="condicion"
+                                               value="{{ $actividad->condicion }}"
+                                               name="condicion"
+                                               required>
                                     </div>
                                 </div><!-- end row 2 -->
 
@@ -92,8 +110,14 @@
                                     <p class="secondary-color">Detalle paso a paso las diferentes acciones que se
                                         desarrollarán por
                                         parte del aprendiz en la Actividad de Aprendizaje.</p>
-                                    <textarea class="form-control" rows="2"  id="desc" name="desc"  placeholder="" autofocus
-                                              title="describa las acciones" pattern="[A-Za-z\s]+" required> </textarea>
+                                    <textarea class="form-control"
+                                              id="desc"
+                                              name="desc"
+
+                                              placeholder="" autofocus
+                                              title="describa las acciones" pattern="[A-Za-z\s]+" required>
+                                                {{ $actividad->descripcion }}
+                                    </textarea>
                                     <div class="invalid-feedback">
                                         Por favor introduzca resultado de aprendizaje.
                                     </div>
@@ -106,21 +130,40 @@
                                         <label for="tiempo-actividad" class="form-label labels-forms is-required">Tiempo (horas)
                                         </label>
 
-                                        <input type="text" class="form-control" placeholder="tiempo actividad" id="tiempo" name="tiempo" required>
+                                        <input type="text"
+                                               class="form-control"
+                                               placeholder="tiempo actividad"
+                                               id="tiempo"
+                                               name="tiempo"
+                                               value="{{ $actividad->tiempo }}"
+                                               required>
                                     </div><!-- end col una-->
                                     <div class="col p-3">
                                         <label for="disable-nombre-elemento" class="form-label labels-forms is-required">La
                                             actividad genera
                                             evidencia</label>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio"  name="genera_evidencia" id="radio-si" value="1"
-                                                   checked>
+                                            <input class="form-check-input"
+                                                   type="radio"
+                                                   name="genera_evidencia"
+                                                   id="radio-si" value="1"
+                                                   @if($actividad->genera_evidencia  == 1)
+                                                     checked
+                                                   @endif
+                                                   >
                                             <label class="form-check-label" for="radio-si">
                                                 Si
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio"  name="genera_evidencia" id="radio-no" value="2">
+                                            <input class="form-check-input"
+                                                   type="radio"
+                                                   name="genera_evidencia"
+                                                   @if($actividad->genera_evidencia  == 2)
+                                                     checked
+                                                   @endif
+                                                   id="radio-no"
+                                                   value="2">
                                             <label class="form-check-label" for="radio-no">
                                                 No
                                             </label>

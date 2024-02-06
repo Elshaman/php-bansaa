@@ -30,14 +30,14 @@
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
-                        <h6>Username</h6>
+                        <h6>{{ Auth::user()->name }}</h6>
                     </li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="./pages-login.php">
+                        <a class="dropdown-item d-flex align-items-center" href="{{ url("logout") }}">
                             <i class="bi bi-box-arrow-right"></i>
                             <span>Salir</span>
                         </a>

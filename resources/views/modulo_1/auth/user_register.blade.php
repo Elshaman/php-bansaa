@@ -40,12 +40,15 @@
 
                                         <!-- Submit button -->
                                         <button type="submit" class="btn btn-primary btn-block mb-4">
-                                            Sign up
+                                            Registrarse
                                         </button>
 
                                         @if(session('mensaje'))
                                             <div class="alert alert-success">
-                                                {{session('mensaje')}}
+                                                {{session('mensaje')}},  Puede iniciar sesión
+                                                <a href="{{ url("login/create") }}" >
+                                                    aquí
+                                                </a>
                                             </div>
                                             @endif
 

@@ -44,7 +44,7 @@ class ActividadPaso2Controller extends Controller
             $actividad->condicion =  $request->condicion;
             $actividad->descripcion =  $request->desc;
             $actividad->tiempo =  $request->tiempo;
-            $actividad->genera_evidencia = $request->genera_evidencia === "si";
+            $actividad->genera_evidencia = $request->genera_evidencia;
             $actividad->tipologiapp_id = $request->tipologia;
             $actividad->tipoapp_id= session('tipos_actividad' );
             $actividad->rap_id = session('raps');
@@ -53,6 +53,11 @@ class ActividadPaso2Controller extends Controller
             $actividad->save();
             session(['actividad' =>  $actividad->id]);
 
+            if( $actividad->genera_evidencia=="1"){
+                return response()->redirectTo('actividad_paso_3_alt/create');
+            }else{
+                return  redirect('actividad_paso_4/create');
+            }
 
 
         //echo "actividad creada";

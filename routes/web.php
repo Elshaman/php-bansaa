@@ -33,6 +33,14 @@ Route::resource('actividad_paso_4' , \App\Http\Controllers\ActividadPaso4Control
 Route::resource('actividad_paso_5' , \App\Http\Controllers\ActividadPaso5Controller::class);
 Route::resource('actividad_paso_6' , \App\Http\Controllers\ActividadPaso6Controller::class);
 
+
+//Rutas para actualizar paso a paso
+Route::resource('update_paso_1' , \App\Http\Controllers\UpdatePaso1Controller::class);
+Route::resource('update_paso_2' , \App\Http\Controllers\UpdatePaso2Controller::class);
+Route::resource('update_paso_3' , \App\Http\Controllers\UpdatePaso3Controller::class);
+Route::resource('update_paso_4' , \App\Http\Controllers\UpdatePaso4Controller::class);
+Route::resource('update_paso_5' , \App\Http\Controllers\UpdatePaso5Controller::class);
+
 //Rutas para actividad
 Route::resource('actividad' , \App\Http\Controllers\ActividadController::class);
 
@@ -40,6 +48,7 @@ Route::resource('actividad' , \App\Http\Controllers\ActividadController::class);
 //Rutas de usuario y Login
 Route::resource('user' , \App\Http\Controllers\UserController::class);
 Route::resource('login' , \App\Http\Controllers\LoginController::class);
+Route::get('logout' , [\App\Http\Controllers\LoginController::class , "logout"]);
 
 //Rutas varias modulo 1:
 Route::get('/' , [\App\Http\Controllers\VariosModulo1Controller::class , "principal"]);
@@ -52,6 +61,7 @@ Route::resource('raps' , RapsController::class);
 
 //RUTAS MODULO 2
 Route::any('catalogo', [\App\Http\Controllers\CatalogController::class , "index"]);
+Route::get('details/{idactividad}', [\App\Http\Controllers\CatalogController::class , "show"]);
 
 //rutas prueba
 Route::get('nultiselect' , function (){

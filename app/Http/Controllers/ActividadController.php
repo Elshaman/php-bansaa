@@ -38,7 +38,29 @@ class ActividadController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $actividad = Actividad::find($id);
+        $evidencias = $actividad->evidencias;
+        //borrar los detalles de evidencia
+        foreach ($evidencias as $e){
+            detallevidencias()->delete();
+        }
+        //borrar las evidencias de la actividad
+        $actividad->evidencias()->delete();
+
+        //borrar elementos y materiales
+        $actividad->materiales()->delete();
+        $actividad->elementos()->delete();
+
+        //borrar la actividad
+        $actividad->delete();
+
+
+
+        //redireccionar a mis actividades
+        return redirect('actividad')
+            ->with('success', 'Actividad eliminada exitosamente');
+
+
     }
 
     /**
@@ -62,6 +84,6 @@ class ActividadController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
     }
 }

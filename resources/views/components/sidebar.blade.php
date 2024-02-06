@@ -38,7 +38,7 @@
             </a>
             <ul id="moduloBAA-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="baa-consultar-actividad.php" id="consultarActividad">
+                    <a href="{{ url("catalogo") }}" id="consultarActividad">
                         <i class="bi bi-circle"></i><span>Consultar Actividad</span>
                     </a>
                 </li>

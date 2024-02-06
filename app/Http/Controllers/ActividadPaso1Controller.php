@@ -60,7 +60,8 @@ class ActividadPaso1Controller extends Controller
      */
     public function show(Actividad $actividad)
     {
-        //
+        //seleccion de programa, competencia y rap
+
     }
 
     /**

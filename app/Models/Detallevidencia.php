@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Detallevidencia extends Model
 {
     use HasFactory;
+
+
 }

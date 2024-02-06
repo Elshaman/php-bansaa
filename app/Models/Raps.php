@@ -17,6 +17,10 @@ class Raps extends Model
         return $this->hasMany(Actividad::class, "rap_id");
     }
 
+    public function competencia(){
+        return $this->belongsTo(Competencia::class );
+    }
+
 
 
 }
